@@ -1,0 +1,37 @@
+.resultList {
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    padding: 15px;
+    border-radius: 8px;
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .resultList h2 {
+    margin-top: 0;
+    color: #04364A;
+    font-size: 1.2rem;
+  }
+  
+  .resultItem {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s ease;
+  }
+  
+  .resultItem:hover {
+    background-color: #f0f8ff;
+  }
+  
+  .tipo {
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  .noResults {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+  }
+  

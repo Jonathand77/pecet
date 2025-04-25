@@ -1,0 +1,46 @@
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #04364A;
+    color: white;
+    padding: 20px;
+    margin-top: auto;
+  }
+  
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo {
+    height: 30px;
+  }
+  
+  .name {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .center {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .link:hover {
+    color: #00C2FF;
+  }
+  
+  .right {
+    font-size: 0.85rem;
+    text-align: right;
+  }
+  
