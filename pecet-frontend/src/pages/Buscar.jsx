@@ -16,7 +16,7 @@ const Buscar = () => {
     const dummyResults = [
       { id: 1, titulo: 'Guía de Investigación PECET', tipo: 'pdf', url: '/ejemplo.pdf' },
       { id: 2, titulo: 'Resumen Proyecto 2023', tipo: 'texto', contenido: 'Este documento contiene el resumen del proyecto...' },
-      { id: 3, titulo: 'Diagrama Vacunación', tipo: 'imagen', url: '/diagrama.png' },
+      { id: 3, titulo: 'Diagrama Vacunación', tipo: 'imagen', url: '../assets/img/LogoUdeA.png' },
     ];
     setResults(dummyResults);
     setSelectedResult(null);

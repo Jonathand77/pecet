@@ -1,46 +1,90 @@
 .footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #04364A;
-    color: white;
-    padding: 20px;
-    margin-top: auto;
-  }
-  
-  .left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .logo {
-    height: 30px;
-  }
-  
-  .name {
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-  
-  .center {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .link {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .link:hover {
-    color: #00C2FF;
-  }
-  
-  .right {
-    font-size: 0.85rem;
-    text-align: right;
-  }
-  
+  background-color: #069a7e;
+  color: white;
+  padding: 40px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 70px;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.contactSection {
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.contactSection h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.contactSection p {
+  margin: 5px 0;
+}
+
+.contactSection a {
+  color: #026937;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contactSection a:hover {
+  color: #7bdff2;
+}
+
+.icon {
+  margin-right: 8px;
+  color: #026937;
+}
+
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+}
+
+.links a {
+  color: #ddd;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: #00C2FF;
+}
+
+.copy {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+}

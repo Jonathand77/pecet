@@ -2,19 +2,43 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/Navbar.module.css';
 import logo from '../assets/img/PecetLogo.png';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   return (
-    <nav className={styles.navbar}>
+    <motion.nav
+      className={styles.navbar}
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
       <div className={styles.logoSection}>
-        <img src={logo} alt="PECET Logo" className={styles.logo} />
+        <motion.img
+          src={logo}
+          alt="PECET Logo"
+          className={styles.logo}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.3 }}
+        />
       </div>
       <ul className={styles.navLinks}>
-        <li><Link to="/" className={styles.link}>Home</Link></li>
-        <li><Link to="/buscar" className={styles.link}>Buscar</Link></li>
-        <li><Link to="/dashboard" className={styles.link}>Dashboard</Link></li>
+        <li>
+          <Link to="/" className={styles.link}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/buscar" className={styles.link}>
+            Buscar
+          </Link>
+        </li>
+        <li>
+          <Link to="/dashboard" className={styles.link}>
+            Dashboard
+          </Link>
+        </li>
       </ul>
-    </nav>
+    </motion.nav>
   );
 };
 
