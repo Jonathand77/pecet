@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from '../styles/Navbar.module.css';
-import logo from '../assets/img/PecetLogo.png';
-import { motion } from 'framer-motion';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "../styles/Navbar.module.css";
+import logo from "../assets/img/PecetLogo.png";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   return (
@@ -10,7 +10,7 @@ const Navbar = () => {
       className={styles.navbar}
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className={styles.logoSection}>
         <motion.img
@@ -19,6 +19,8 @@ const Navbar = () => {
           className={styles.logo}
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.3 }}
+          onClick={() => (window.location.href = "/")}
+          style={{ cursor: "pointer" }}
         />
       </div>
       <ul className={styles.navLinks}>
