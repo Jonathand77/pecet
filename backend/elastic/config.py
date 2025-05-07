@@ -1,5 +1,8 @@
 import os
 from elasticsearch import Elasticsearch
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configuración y autenticación de ElasticSearch centralizada
 def get_es_client() -> Elasticsearch:

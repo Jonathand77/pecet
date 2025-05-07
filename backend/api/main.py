@@ -1,11 +1,45 @@
 # api/main.py
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, HTTPException
+import uuid
+
 from scripts.extract_text import extract_text_from_file
+from scripts.generate_embedding import generate_embedding
+from scripts.index_to_elastic import index_document, get_document_by_id
+from services.search import search as es_search
 
 app = FastAPI()
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
-    contents = await file.read()
-    extracted_text = extract_text_from_file(file.filename, contents)
-    return {"text": extracted_text}
+    try:
+        contents = await file.read()
+        # Extracción de texto
+        text = extract_text_from_file(file.filename, contents)
+        # Generación de embedding
+        embedding = generate_embedding(text)
+        # Indexado en ElasticSearch
+        doc_id = str(uuid.uuid4())
+        metadata = {"filename": file.filename}
+        index_document(doc_id, text, embedding, metadata)
+        return {"id": doc_id, "text": text}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/search")
+async def search_documents(query: str):
+    try:
+        embedding = generate_embedding(query)
+        results = es_search(embedding)
+        print(embedding)
+        return {"results": results}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/preview/{doc_id}")
+async def preview_document(doc_id: str):
+    try:
+        res = get_document_by_id(doc_id)
+        source = res.get("_source", {})
+        return {"id": doc_id, "text": source.get("text"), "metadata": source.get("metadata")}
+    except Exception:
+        raise HTTPException(status_code=404, detail="Documento no encontrado")
