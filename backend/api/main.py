@@ -1,14 +1,32 @@
 # api/main.py
 from fastapi import FastAPI, UploadFile, File, HTTPException
 import uuid
+import os
+from dotenv import load_dotenv
 
 from scripts.extract_text import extract_text_from_file
 from scripts.generate_embedding import generate_embedding
 from scripts.index_to_elastic import index_document, get_document_by_id
 from services.search import search as es_search
+from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+from models.search_request import SearchRequest
+
+
+# Cargar variables de entorno
+load_dotenv()
+
 
 app = FastAPI()
 
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["Authorization", "Content-Type"],
+)
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     try:
@@ -26,11 +44,10 @@ async def upload_file(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/search")
-async def search_documents(query: str):
+async def search_documents(request: SearchRequest):
     try:
-        embedding = generate_embedding(query)
+        embedding = generate_embedding(request.query)
         results = es_search(embedding)
-        print(embedding)
         return {"results": results}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

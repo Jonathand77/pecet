@@ -1,12 +1,14 @@
 import os
-from elasticsearch import Elasticsearch
+from elastic.config import create_index, get_es_client
 from dotenv import load_dotenv
 
 load_dotenv()
 
 # Conexión compartida
-es = Elasticsearch(os.getenv("ELASTICSEARCH_URL", "http://localhost:9200"))
+es = get_es_client()
+
 INDEX_NAME = os.getenv("ES_INDEX", "documents")
+create_index(INDEX_NAME)
 
 def search(query_embedding: list, top_k: int = 10) -> list:
     """
