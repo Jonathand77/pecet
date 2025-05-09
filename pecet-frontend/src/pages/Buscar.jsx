@@ -9,18 +9,23 @@ const Buscar = () => {
   const [selectedResult, setSelectedResult] = useState(null);
 
   const handleSearch = (query) => {
-    // Aquí irá el llamado a la API backend
     console.log("Buscando:", query);
-
-    // Resultado simulado
+  
     const dummyResults = [
-      { id: 1, titulo: 'Guía de Investigación PECET', tipo: 'pdf', url: '/ejemplo.pdf' },
+      { id: 1, titulo: 'Guía de vacunación PECET', tipo: 'pdf', url: '/ejemplo.pdf' },
+      { id: 4, titulo: 'Guía de malaria PECET', tipo: 'pdf', url: '/ejemplo.pdf' },
       { id: 2, titulo: 'Resumen Proyecto 2023', tipo: 'texto', contenido: 'Este documento contiene el resumen del proyecto...' },
+      { id: 5, titulo: 'Resumen mosquito 2025', tipo: 'texto', contenido: 'Este documento contiene el resumen del proyecto...' },
       { id: 3, titulo: 'Diagrama Vacunación', tipo: 'imagen', url: '../assets/img/LogoUdeA.png' },
     ];
-    setResults(dummyResults);
+  
+    const filteredResults = dummyResults.filter(result =>
+      result.titulo.toLowerCase().includes(query.toLowerCase())
+    );
+  
+    setResults(filteredResults);
     setSelectedResult(null);
-  };
+  };  
 
   const handleResultClick = (result) => {
     setSelectedResult(result);
