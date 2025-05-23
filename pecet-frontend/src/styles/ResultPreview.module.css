@@ -1,38 +1,37 @@
 .preview {
-    padding: 20px;
-    background-color: #f9f9f9;
-    height: 100%;
-    overflow-y: auto;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .previewEmpty {
-    padding: 20px;
-    text-align: center;
-    font-style: italic;
-    color: #777;
-  }
-  
-  .title {
-    margin-bottom: 15px;
-    color: #04364A;
-  }
-  
-  .pdf {
-    width: 100%;
-    height: 500px;
-    border: none;
-    border-radius: 8px;
-  }
-  
-  .image {
-    max-width: 100%;
-    border-radius: 8px;
-  }
-  
-  .textContent {
-    white-space: pre-wrap;
-    line-height: 1.5;
-  }
-  
+  padding: 20px;
+  background-color: #f9f9f9;
+  height: 100%;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.previewEmpty {
+  padding: 20px;
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+.title {
+  margin-bottom: 15px;
+  color: #04364A;
+}
+
+.pdf {
+  width: 100%;
+  height: 500px;
+  border: none;
+  border-radius: 8px;
+}
+
+.image {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.textContent {
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
