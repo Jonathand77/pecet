@@ -2,6 +2,7 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 import uuid
 import os
+import requests
 from dotenv import load_dotenv
 
 from scripts.extract_text import extract_text_from_file
@@ -10,7 +11,7 @@ from scripts.index_to_elastic import index_document, get_document_by_id
 from services.search import search as es_search
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from models.search_request import SearchRequest
+from models.search_request import SearchRequest, LinkRequest
 
 
 # Cargar variables de entorno
@@ -27,21 +28,30 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["Authorization", "Content-Type"],
 )
-@app.post("/upload")
-async def upload_file(file: UploadFile = File(...)):
+
+
+@app.post("/embedding/link")
+async def upload_link(request: LinkRequest):
     try:
-        contents = await file.read()
+        # Descargar el archivo desde el link
+        url_str = str(request.url)
+        response = requests.get(url_str)
+        response.raise_for_status()
+        filename = url_str.split("/")[-1]
+        print(f"Descargando {filename} desde {url_str}")
+        contents = response.content
         # Extracción de texto
-        text = extract_text_from_file(file.filename, contents)
+        text = extract_text_from_file(filename, contents)
         # Generación de embedding
         embedding = generate_embedding(text)
         # Indexado en ElasticSearch
         doc_id = str(uuid.uuid4())
-        metadata = {"filename": file.filename}
+        metadata = {"filename": filename, "source_url": str(request.url)}
         index_document(doc_id, text, embedding, metadata)
         return {"id": doc_id, "text": text}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/search")
 async def search_documents(request: SearchRequest):
@@ -51,6 +61,7 @@ async def search_documents(request: SearchRequest):
         return {"results": results}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/preview/{doc_id}")
 async def preview_document(doc_id: str):
