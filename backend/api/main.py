@@ -71,3 +71,6 @@ async def preview_document(doc_id: str):
         return {"id": doc_id, "text": source.get("text"), "metadata": source.get("metadata")}
     except Exception:
         raise HTTPException(status_code=404, detail="Documento no encontrado")
+    
+
+
