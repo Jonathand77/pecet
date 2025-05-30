@@ -72,5 +72,18 @@ async def preview_document(doc_id: str):
     except Exception:
         raise HTTPException(status_code=404, detail="Documento no encontrado")
     
+from azure_blob.blob_service import AzureBlobService  # Agrega este import
 
-
+@app.get("/dashboard")
+async def blobs_summary():
+    try:
+        service = AzureBlobService()
+        total = service.count_blobs()
+        latest = service.get_latest_blobs()
+        latest_serialized = [
+            {"name": blob.name, "last_modified": blob.last_modified.isoformat()}
+            for blob in latest
+        ]
+        return {"total": total, "latest": latest_serialized}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

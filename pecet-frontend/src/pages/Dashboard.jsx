@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../styles/Dashboard.module.css';
-import { FaFolderOpen, FaLock, FaGlobe, FaClock } from 'react-icons/fa';
+import { FaFolderOpen, FaClock } from 'react-icons/fa';
 
 const Dashboard = () => {
+  const [total, setTotal] = useState(0);
+  const [latest, setLatest] = useState([]);
+
+  useEffect(() => {
+    fetch('/dashboard')
+      .then(res => res.json())
+      .then(data => {
+        setTotal(data.total);
+        setLatest(data.latest);
+      });
+  }, []);
+
   return (
     <div className={styles.dashboard}>
       <h1 className={styles.title}>📊 Dashboard de Consumo</h1>
@@ -12,22 +24,19 @@ const Dashboard = () => {
         <div className={styles.card}>
           <FaFolderOpen className={styles.icon} />
           <h3>Total de activos</h3>
-          <p>150</p>
-        </div>
-        <div className={styles.card}>
-          <FaGlobe className={styles.icon} />
-          <h3>Activos públicos</h3>
-          <p>90</p>
-        </div>
-        <div className={styles.card}>
-          <FaLock className={styles.icon} />
-          <h3>Activos privados</h3>
-          <p>60</p>
+          <p>{total}</p>
         </div>
         <div className={styles.card}>
           <FaClock className={styles.icon} />
-          <h3>Más reciente</h3>
-          <p>Guía de Evaluación 2024</p>
+          <h3>3 más recientes</h3>
+          <ul>
+            {latest.map(blob => (
+              <li key={blob.name}>
+                {blob.name} <br />
+                <small>{new Date(blob.last_modified).toLocaleString()}</small>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

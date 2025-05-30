@@ -39,6 +39,11 @@ const Navbar = () => {
             Dashboard
           </Link>
         </li>
+        <li>
+          <Link to="/about" className={styles.link}>
+            About Us
+          </Link>
+        </li>
       </ul>
     </motion.nav>
   );
