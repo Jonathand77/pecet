@@ -25,7 +25,7 @@ const Home = () => {
         transition={{ delay: 0.7, duration: 0.8 }}
       >
         Esta plataforma permite realizar búsquedas inteligentes sobre los activos de conocimiento del PECET.
-        Puedes consultar documentos, imágenes y archivos relevantes para la investigación y gestión del conocimiento.
+        Puedes consultar documentos, imágenes y archivos relevantes para la investigación y gestión del conocimiento. 
       </motion.p>
     </motion.div>
   );

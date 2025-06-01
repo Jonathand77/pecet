@@ -2,45 +2,90 @@
   padding: 2rem;
   max-width: 1000px;
   margin: 0 auto;
-  color: #333;
   font-family: 'Segoe UI', sans-serif;
+  color: #2a2a2a;
+  background: #f2f7ff;
+  border-radius: 12px;
 }
 
 .title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
   text-align: center;
+  color: #003566;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.iconTitle {
+  color: #00C2FF;
+  font-size: 2rem;
 }
 
 .section {
-  margin-top: 2rem;
+  background: #ffffff;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.section h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  color: #00C2FF;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  color: #00C2FF;
 }
 
 .team {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
 .member {
   flex: 1;
-  background: #f9f9f9;
+  background: #e0f7fa;
   padding: 1rem;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.member:hover {
+  transform: scale(1.02);
 }
 
 .social a {
-  margin-right: 0.5rem;
-  font-size: 1.5rem;
-  color: #0077b6;
+  margin-right: 0.7rem;
+  font-size: 1.8rem;
+  color: #069a7e;
+  transition: color 0.3s ease;
 }
 
-.techList {
+.social a:hover {
+  color: #00C2FF;
+}
+
+.techList, .features {
   list-style: none;
-  padding: 0;
+  padding-left: 1rem;
 }
 
-.techList li {
-  margin: 0.5rem 0;
+.techList li, .features li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inlineIcon {
+  color: #3a86ff;
 }

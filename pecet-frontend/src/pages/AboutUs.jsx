@@ -1,68 +1,155 @@
-import React from 'react';
-import styles from '../styles/AboutUs.module.css';
-import { FaGithub, FaLinkedin, FaLaptopCode, FaUniversity } from 'react-icons/fa';
+import React from "react";
+import styles from "../styles/AboutUs.module.css";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaReact,
+  FaPiedPiper,
+  FaFileCode,
+  FaCogs,
+  FaPython,
+  FaUniversity,
+  FaRocket,
+  FaInfoCircle,
+  FaUsers,
+  FaWrench,
+  FaHandsHelping,
+} from "react-icons/fa";
 
 const AboutUs = () => {
   return (
     <div className={styles.aboutUs}>
-      <h1 className={styles.title}>👨‍💻 Acerca del Proyecto</h1>
-      
+      <h1 className={styles.title}>
+        <FaInfoCircle className={styles.iconTitle} /> Acerca del Proyecto
+      </h1>
+
       <section className={styles.section}>
-        <h2>🎯 Objetivo del Proyecto</h2>
+        <h2>
+          <FaRocket className={styles.icon} /> Objetivo del Proyecto
+        </h2>
+        <h3>Agente inteligente para los activos de conocimiento del PECET</h3>
         <p>
-          Este sistema fue desarrollado como parte de un reto académico con el objetivo de aplicar conceptos de desarrollo backend con FastAPI y frontend con React. Su propósito es gestionar y visualizar documentos embebidos con Azure Blob Storage y ElasticSearch.
+          Este proyecto tiene como finalidad mejorar la gestión y consulta de
+          los activos de conocimiento del PECET a través de un agente
+          inteligente. La producción científica requiere de una gestión
+          eficiente para facilitar la investigación y toma de decisiones. Esta
+          solución integra backend con FastAPI y frontend con React, permitiendo
+          subir, consultar y buscar documentos usando tecnologías como Azure
+          Blob Storage y ElasticSearch.
         </p>
       </section>
 
       <section className={styles.section}>
-        <h2>🧠 Información de los Creadores</h2>
+        <h2>
+          <FaUsers className={styles.icon} /> Información de los Creadores
+        </h2>
         <div className={styles.team}>
           <div className={styles.member}>
             <h3>Jonathan David Fernandez Vargas</h3>
-            <p><FaUniversity /> Ingeniería de Sistemas - Universidad de Antioquia</p>
-            <p>Apasionado por el desarrollo web, backend y la inteligencia artificial.</p>
+            <p>
+              <FaUniversity className={styles.inlineIcon} /> Ingeniería de
+              Sistemas - Universidad de Antioquia
+            </p>
+            <p>
+              Apasionado por el aprendizaje continuo, con experiencia en
+              programación, investigación y atención al cliente. Destaca en
+              comunicación efectiva, trabajo colaborativo y desarrollo web.
+            </p>
             <div className={styles.social}>
-              <a href="https://github.com/Jonathand77" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-              <a href="https://www.linkedin.com/in/jonathan-david-fernandez-vargas-800b04279/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+              <a
+                href="https://github.com/Jonathand77"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/jonathan-david-fernandez-vargas-800b04279/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin />
+              </a>
             </div>
           </div>
           <div className={styles.member}>
             <h3>Valeria Alvarez Fernandez</h3>
-            <p><FaUniversity /> Ingeniería de Sistemas - Universidad de Antioquia</p>
-            <p>Especializada en interfaces atractivas, accesibilidad y experiencia de usuario.</p>
+            <p>
+              <FaUniversity className={styles.inlineIcon} /> Ingeniería de
+              Sistemas - Universidad de Antioquia
+            </p>
+            <p>
+              Enfocada en diseño de interfaces accesibles y centradas en el
+              usuario. Creativa, comprometida con la calidad, resolutiva y
+              colaborativa. Apasionada por mejorar a través del diseño.
+            </p>
             <div className={styles.social}>
-              <a href="https://github.com/Vaf88" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-              <a href="https://www.linkedin.com/in/valeria-alvarez-fernandez-961013325/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+              <a
+                href="https://github.com/Vaf88"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/valeria-alvarez-fernandez-961013325/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin />
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       <section className={styles.section}>
-        <h2>🛠️ Tecnologías Utilizadas</h2>
+        <h2>
+          <FaWrench className={styles.icon} /> Tecnologías Utilizadas
+        </h2>
         <ul className={styles.techList}>
-          <li><FaLaptopCode /> React + Vite (Frontend)</li>
-          <li><FaLaptopCode /> FastAPI (Backend)</li>
-          <li><FaLaptopCode /> Azure Blob Storage (Almacenamiento de archivos)</li>
-          <li><FaLaptopCode /> ElasticSearch (Indexación y búsqueda)</li>
-          <li><FaLaptopCode /> Python y JavaScript</li>
+          <li>
+            <FaReact className={styles.inlineIcon} /> React + TypeScript
+            (Frontend)
+          </li>
+          <li>
+            <FaPiedPiper className={styles.inlineIcon} /> FastAPI + Python
+          </li>
+          <li>
+            <FaCogs className={styles.inlineIcon} /> Azure Blob Storage
+          </li>
+          <li>
+            <FaFileCode className={styles.inlineIcon} /> ElasticSearch
+          </li>
+          <li>
+            <FaPython className={styles.inlineIcon} /> Python y Docker
+          </li>
         </ul>
       </section>
 
       <section className={styles.section}>
-        <h2>🚀 Funcionalidades Clave</h2>
-        <ul>
-          <li>Subida de documentos vía enlace</li>
-          <li>Extracción de texto desde archivos PDF</li>
-          <li>Generación de embeddings y búsqueda semántica</li>
-          <li>Almacenamiento y consulta desde Azure Blob Storage</li>
-          <li>Panel de estadísticas con React</li>
+        <h2>
+          <FaRocket className={styles.icon} /> Funcionalidades Clave
+        </h2>
+        <ul className={styles.features}>
+          <li>📁 Subida de documentos vía enlace</li>
+          <li>📄 Extracción de texto desde archivos PDF</li>
+          <li>
+            🧠 Generación de embeddings y búsqueda semántica con API OpenAI
+          </li>
+          <li>☁️ Almacenamiento y consulta desde Azure Blob Storage</li>
+          <li>📊 Panel de estadísticas con React</li>
         </ul>
       </section>
 
       <section className={styles.section}>
-        <h2>🙏 Créditos y Agradecimientos</h2>
-        <p>Gracias a nuestros profesores y compañeros por su apoyo durante el desarrollo del proyecto.</p>
+        <h2>
+          <FaHandsHelping className={styles.icon} /> Créditos y Agradecimientos
+        </h2>
+        <p>
+          Gracias a nuestros profesores y compañeros por su apoyo durante el
+          desarrollo del proyecto.
+        </p>
       </section>
     </div>
   );
