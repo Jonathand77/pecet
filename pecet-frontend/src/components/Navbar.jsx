@@ -35,11 +35,6 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/dashboard" className={styles.link}>
-            Dashboard
-          </Link>
-        </li>
-        <li>
           <Link to="/about" className={styles.link}>
             About Us
           </Link>
